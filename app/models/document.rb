@@ -1,7 +1,7 @@
 class Document < ApplicationRecord
   has_one_attached :file
 
-  enum status: {
+  enum :status, {
     uploaded: 0,
     processing: 1,
     ready: 2,
