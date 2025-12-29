@@ -1,5 +1,16 @@
 <h1><%= @document.title %></h1>
 
+<%= button_to "Process (chunk)", process_chunks_document_path(@document), method: :post,
+      data: { turbo_confirm: "Process this document and generate chunks?" } %>
+
+<h2>Chunks</h2>
+<p>Total: <%= @document.chunks.count %></p>
+
+<% @document.chunks.order(:position).limit(5).each do |chunk| %>
+  <pre style="white-space: pre-wrap;"><%= chunk.content.truncate(500) %></pre>
+<% end %>
+
+
 <p><strong>Estado:</strong> <%= @document.status %></p>
 <p><strong>Creado:</strong> <%= @document.created_at %></p>
 <p><strong>Actualizado:</strong> <%= @document.updated_at %></p>
