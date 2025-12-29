@@ -1,0 +1,19 @@
+<h1>Subir documento</h1>
+
+<%= form_with model: @document do |f| %>
+  <div>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </div>
+
+  <div style="margin-top: 12px;">
+    <%= f.label :file %><br/>
+    <%= f.file_field :file, accept: ".txt,.md" %>
+  </div>
+
+  <div style="margin-top: 12px;">
+    <%= f.submit "Subir" %>
+  </div>
+<% end %>
+
+<p><%= link_to "Volver", documents_path %></p>

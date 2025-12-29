@@ -1,0 +1,28 @@
+<h1>DocQ — Documents</h1>
+
+<p><%= link_to "Subir documento", new_document_path %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Estado</th>
+      <th>Creado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |doc| %>
+      <tr>
+        <td><%= link_to doc.title, document_path(doc) %></td>
+        <td><%= doc.status %></td>
+        <td><%= doc.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>
+          <%= button_to "Eliminar", document_path(doc),
+                method: :delete,
+                data: { turbo_confirm: "¿Eliminar este documento?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

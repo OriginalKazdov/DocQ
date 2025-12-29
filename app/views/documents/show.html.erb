@@ -1,0 +1,13 @@
+<h1><%= @document.title %></h1>
+
+<p><strong>Estado:</strong> <%= @document.status %></p>
+<p><strong>Creado:</strong> <%= @document.created_at %></p>
+<p><strong>Actualizado:</strong> <%= @document.updated_at %></p>
+
+<% if @document.file.attached? %>
+  <p><strong>Archivo:</strong> <%= @document.file.filename %></p>
+<% else %>
+  <p><em>No hay archivo adjunto</em></p>
+<% end %>
+
+<p><%= link_to "Volver", documents_path %></p>
