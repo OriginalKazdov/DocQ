@@ -12,7 +12,8 @@ class DocumentsController < ApplicationController
     @document.status = :uploaded
 
     if @document.save
-      redirect_to documents_path, notice: "Document uploaded."
+      ProcessDocumentJob.perform_later(@document.id)
+      redirect_to documents_path, notice: "Processing document..."
     else
       render :new, status: :unprocessable_entity
     end

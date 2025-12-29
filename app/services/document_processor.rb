@@ -9,6 +9,7 @@ class DocumentProcessor
 
   def call
     @document.update!(status: :processing, error_message: nil)
+    sleep 1 if Rails.env.development?
 
     text = read_text
     chunks = chunk_text(text)
